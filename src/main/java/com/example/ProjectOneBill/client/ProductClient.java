@@ -11,16 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@FeignClient(name = "product-client", url = "10.177.68.56:8080")
+@FeignClient(name = "product-client", url = "10.177.68.115:8080")
 public interface ProductClient {
-    /**
-     * API Ref
-     * [GET] 10.177.68.40:8983/solr/productCollection/browse?q=samsung
-     */
-
     @RequestMapping(method = RequestMethod.GET, path = "/product/serviceCalls/")
-    public ArrayList<ProductResponseDto> getProducts(@RequestParam ArrayList<Long> arrOfP);// from q = samsung
-
-
-
+    public ArrayList<ProductResponseDto> getProducts(@RequestParam ArrayList<Long> arrOfP);
 }
