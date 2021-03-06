@@ -20,5 +20,7 @@ public class Bill {
 
     private Date date;
 
+    private String username;
+
 
 }

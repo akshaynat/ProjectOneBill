@@ -18,18 +18,24 @@ public class BillController {
     @Autowired
     private BillService billService;
 
-    @GetMapping( "/orders/{id}")
-    public BillResponseDto getBillById(@PathVariable ("id") Long bill_id) {
-        return billService.getBillByid(bill_id);
+    @GetMapping( "/{username}/orders/{id}")
+    public BillResponseDto getBillById(@PathVariable String username, @PathVariable ("id") Long bill_id) {
+        return billService.getBillByid(username, bill_id);
     }
 
-    @PostMapping
-    public BillReponsePostDto createBill(@RequestBody List<BillRequestDto> billRequestDto) {
-        return billService.createBill(billRequestDto);
+    @PostMapping( "/{username}")
+    public BillReponsePostDto createBill(@PathVariable String username, @RequestBody List<BillRequestDto> billRequestDto) {
+        System.out.println(billRequestDto);
+        return billService.createBill(username, billRequestDto);
     }
 
-    @GetMapping("/orderDetails")
-    public List<BillResponseDto> getBillByCalendar(@RequestParam Date fromDate, @RequestParam Date toDate) {
-        return billService.getBillByCalendar(fromDate, toDate);
+    @GetMapping("/{username}/orderDetails")
+    public List<BillResponseDto> getBillByCalendar(@PathVariable String username, @RequestParam Date fromDate, @RequestParam Date toDate) {
+        return billService.getBillByCalendar(username, fromDate, toDate);
+    }
+
+    @GetMapping("/{username}")
+    public List<BillResponseDto> getBillsByUsername(@PathVariable String username) {
+        return billService.getBillsByUsername(username);
     }
 }

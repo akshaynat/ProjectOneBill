@@ -9,9 +9,11 @@ import java.sql.Date;
 import java.util.List;
 
 public interface BillService {
-    BillResponseDto getBillByid(Long bill_id);
+    BillResponseDto getBillByid(String username, Long bill_id);
 
-    BillReponsePostDto createBill(List<BillRequestDto> billRequestDto);
+    BillReponsePostDto createBill(String username, List<BillRequestDto> billRequestDto);
 
-    List<BillResponseDto> getBillByCalendar(Date fromDate, Date toDate);
+    List<BillResponseDto> getBillByCalendar(String username, Date fromDate, Date toDate);
+
+    List<BillResponseDto> getBillsByUsername(String username);
 }

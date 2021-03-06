@@ -14,5 +14,5 @@ import java.util.Map;
 @FeignClient(name = "product-client", url = "10.177.68.115:8080")
 public interface ProductClient {
     @RequestMapping(method = RequestMethod.GET, path = "/product/serviceCalls/")
-    public ArrayList<ProductResponseDto> getProducts(@RequestParam ArrayList<Long> arrOfP);
+    public ArrayList<ProductResponseDto> getProducts(@RequestParam(value = "arrOfP") ArrayList<Long> arrOfP);
 }

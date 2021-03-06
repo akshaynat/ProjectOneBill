@@ -7,10 +7,17 @@ import org.springframework.stereotype.Repository;
 
 //import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Repository
 public interface BillRepository extends CrudRepository<Bill, Long> {
 
-    @Query(value = "select * from bill where date between ?1 and ?2", nativeQuery = true)
-    ArrayList<Bill> getBillListByDate(java.sql.Date fromDate, java.sql.Date toDate);
+    @Query(value = "select * from bill where username=?1 and date between ?2 and ?3", nativeQuery = true)
+    ArrayList<Bill> getBillListByDate(String username, java.sql.Date fromDate, java.sql.Date toDate);
+
+    @Query(value = "select * from bill where username=?1 and id=?2", nativeQuery = true)
+    Optional<Bill> findBillByUsernameAndBillId(String username, Long bill_id);
+
+    @Query(value = "select * from bill where username=?1", nativeQuery = true)
+    ArrayList<Bill> getBillListByUsername(String username);
 }

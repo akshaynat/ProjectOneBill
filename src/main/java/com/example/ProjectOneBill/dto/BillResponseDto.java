@@ -12,7 +12,9 @@ public class BillResponseDto {
 
     private Date date;
 
+    private String username;
+
 //    private Customer customer;
 
-    private List<ProductResponseDto> productResponseDtoList;
+    private List<CustomResponseDto> customResponseDtoList;
 }
